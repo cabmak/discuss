@@ -17,6 +17,21 @@ defmodule DiscussWeb do
   and import those modules here.
   """
 
+  # Those are Macro, we will define that later but for now, in your Controller,
+  # if you use this line
+  # use DiscussWeb, :controller
+  # it means, DiscussWeb(look at the top, its the module name), :controller will run this code..
+
+  def model do
+    quote do
+      use Ecto.Schema
+
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query
+    end
+  end
+
   def controller do
     quote do
       use Phoenix.Controller, namespace: DiscussWeb
