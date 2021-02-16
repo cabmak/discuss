@@ -1,12 +1,18 @@
-defmodule DiscussWeb.User do
+defmodule Discuss.User do
   use DiscussWeb, :model
+
+  alias Discuss.Comment
+  alias Discuss.Topic
+
+  @derive {Jason.Encoder, only: [:email]}
 
   schema "users" do
     field(:email, :string)
     field(:provider, :string)
     field(:token, :string)
-    has_many :topics, Discuss.Topic
-    has_many :comments, DiscussWeb.Comment
+
+    has_many(:topics, Topic)
+    has_many(:comments, Comment)
 
     timestamps()
   end
