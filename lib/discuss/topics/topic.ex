@@ -1,8 +1,8 @@
-defmodule Discuss.Topic do
+defmodule Discuss.Topics.Topic do
   use DiscussWeb, :model
 
-  alias Discuss.Comment
-  alias Discuss.User
+  alias Discuss.Comments.Comment
+  alias Discuss.Users.User
 
   schema "topics" do
     field(:title, :string)

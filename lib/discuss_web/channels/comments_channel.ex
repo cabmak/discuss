@@ -1,9 +1,9 @@
-defmodule Discuss.CommentsChannel do
+defmodule Discuss.Comments.CommentsChannel do
   use DiscussWeb, :channel
 
-  alias Discuss.Comment
+  alias Discuss.Comments.Comment
   alias Discuss.Repo
-  alias Discuss.Topic
+  alias Discuss.Topics.Topic
 
   def join("comments:" <> topic_id, _params, socket) do
     topic = get_topic(topic_id)

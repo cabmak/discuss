@@ -1,14 +1,14 @@
 defmodule DiscussWeb.TopicController do
   use DiscussWeb, :controller
 
-  alias Discuss.Topic
+  alias Discuss.Topics.Topic
   alias Discuss.Repo
 
   plug DiscussWeb.Plugs.RequireAuth when action in [:new, :create, :edit, :update, :delete]
   plug :check_topic_owner when action in [:update, :edit, :delete]
 
   def index(conn, _params) do
-    IO.inspect(conn.assigns)
+    # IO.inspect(conn.assigns)
     topics = Repo.all(Topic)
     render(conn, "index.html", topics: topics)
   end

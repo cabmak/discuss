@@ -1,7 +1,7 @@
 defmodule Discuss.UserSocket do
   use Phoenix.Socket
 
-  channel("comments:*", Discuss.CommentsChannel)
+  channel("comments:*", Discuss.Comments.CommentsChannel)
 
   transport(:websocket, Phoenix.Transports.WebSocket)
 
@@ -10,8 +10,9 @@ defmodule Discuss.UserSocket do
     case Phoenix.Token.verify(socket, "key", token) do
       {:ok, user_id} ->
         {:ok, assign(socket, :user_id, user_id)}
-      {:error, _error} ->
-        :error
+
+        {:error, _error} ->
+          {:ok, socket}
     end
   end
 

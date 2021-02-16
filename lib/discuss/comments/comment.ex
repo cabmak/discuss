@@ -1,8 +1,8 @@
-defmodule Discuss.Comment do
+defmodule Discuss.Comments.Comment do
   use DiscussWeb, :model
 
-  alias Discuss.User
-  alias Discuss.Topic
+  alias Discuss.Topics.Topic
+  alias Discuss.Users.User
 
   @derive {Jason.Encoder, only: [:content, :user]}
 
